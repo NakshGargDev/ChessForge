@@ -1,4 +1,5 @@
-import { drawPiece } from "./pieces";
+import { handleInput } from "./inputs/handleInput.js";
+import { drawPiece } from "./pieces.js"
 
 export const board = [
 	["r", "n", "b", "q", "k", "b", "n", "r"],
@@ -22,7 +23,12 @@ export function createBoard() {
 
 			square.classList.add("square");
 
-			box.appendChild(square)
+			box.appendChild(square);
+
+			square.dataset.row = row;
+			square.dataset.col = col;
+
+			handleInput(square, board)
 
 			if ((row + col) % 2 == 0) {
 				square.classList.add("light")

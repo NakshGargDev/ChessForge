@@ -1,3 +1,4 @@
 export const game = {
-	selected: null
+	selected: null,
+	selectedSquare: null
 };
