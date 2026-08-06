@@ -1,47 +1,67 @@
 import { game } from "../game";
+import { getLegalMoves } from "../moveGenerator/getLegalMoves.js";
+import { movePiece } from "./movePiece.js"
 
-export function selectPiece(piece, square, row, col) {
+export function selectPiece(square, row, col, board) {
 
-    if (game.selected) {
+	const piece = board[row][col];
 
-        if (game.selected[0] === row && game.selected[1] === col) {
+	if (game.selected) {
 
-            game.selected = null;
-            game.selectedSquare = null;
+		if (game.selected[0] === row && game.selected[1] === col) {
+			game.selected = null;
+			game.selectedSquare = null
+			square.classList.remove("selected")
+			clearHighlights()
+		} else if (piece === "") {
+			const [oldRow, oldCol] = game.selected;
 
-            square.classList.remove("selected");
+			const moves = getLegalMoves(board, oldRow, oldCol)
 
-            return false;
-
-        }
-
-
-        if (piece === "") {
-            return true;
-        }
-
-
-        game.selectedSquare.classList.remove("selected");
-
-        game.selected = [row, col];
-        game.selectedSquare = square;
-
-        square.classList.add("selected");
-
-        return false;
-
-    }
+			const allowed = moves.some(move => move[0] === row && move[1] === col)
 
 
-    if (piece !== "") {
+			if (allowed) {
+				movePiece(board, square, row, col)
+				clearHighlights()
+			}
 
-        game.selected = [row, col];
-        game.selectedSquare = square;
+		}
+	} else {
+		if (piece === "") return;
 
-        square.classList.add("selected");
+		if (piece === piece.toUpperCase() && game.turn === "black") return;
+		if (piece === piece.toLowerCase() && game.turn === "white") return;
 
-    }
+		game.selected = [row, col]
+		game.selectedSquare = square
+		square.classList.add("selected")
 
-    return false;
+		const moves = getLegalMoves(board, row, col);
+		highlightMoves(moves)
+	}
+}
+
+function highlightMoves(moves) {
+
+	clearHighlights();
+
+	for (const [row, col] of moves) {
+
+		const square = document.querySelector(
+			`[data-row="${row}"][data-col="${col}"]`
+		);
+
+		if (square) {
+			square.classList.add("legal");
+		}
+	}
+}
+
+function clearHighlights() {
+
+	document.querySelectorAll(".legal").forEach(square => {
+		square.classList.remove("legal");
+	});
 
 }

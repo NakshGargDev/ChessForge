@@ -16,6 +16,8 @@ export function movePiece(board, square, row, col) {
 	game.selected = null;
 	game.selectedSquare = null;
 
+	game.turn = game.turn === "white" ? "black" : "white"
+
 	document.querySelectorAll(".selected")
 		.forEach(sq => sq.classList.remove("selected"));
 }
