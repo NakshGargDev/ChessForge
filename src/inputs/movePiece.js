@@ -1,5 +1,6 @@
 import { game } from "../game";
 import { pieces } from "../pieces";
+import { isInCheck } from "../rules/isInCheck.js"
 
 export function movePiece(board, square, row, col) {
 
@@ -16,7 +17,13 @@ export function movePiece(board, square, row, col) {
 	game.selected = null;
 	game.selectedSquare = null;
 
-	game.turn = game.turn === "white" ? "black" : "white"
+	game.turn = game.turn === "white" ? "black" : "white";
+
+	const check = isInCheck(board, game.turn === "white")
+
+	if (check) {
+		console.log("check");
+	}
 
 	document.querySelectorAll(".selected")
 		.forEach(sq => sq.classList.remove("selected"));

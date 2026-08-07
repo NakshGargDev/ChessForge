@@ -1,4 +1,4 @@
-import { selectPiece } from "./selectPiece";
+import { handlePiece } from "./handlePiece.js";
 
 export function handleInput(square, board) {
 
@@ -7,7 +7,7 @@ export function handleInput(square, board) {
 		const row = Number(square.dataset.row);
 		const col = Number(square.dataset.col);
 
-		selectPiece(square, row, col, board);
+		handlePiece(square, row, col, board);
 
 	});
 

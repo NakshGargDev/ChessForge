@@ -2,19 +2,22 @@ import { game } from "../game";
 import { getLegalMoves } from "../moveGenerator/getLegalMoves.js";
 import { movePiece } from "./movePiece.js"
 
-export function selectPiece(square, row, col, board) {
+export function handlePiece(square, row, col, board) {
 
 	const piece = board[row][col];
 
 	if (game.selected) {
+		const [oldRow, oldCol] = game.selected;
+
+		const selectedPiece = board[oldRow][oldCol]
+
 
 		if (game.selected[0] === row && game.selected[1] === col) {
 			game.selected = null;
 			game.selectedSquare = null
 			square.classList.remove("selected")
 			clearHighlights()
-		} else if (piece === "") {
-			const [oldRow, oldCol] = game.selected;
+		} else if ((piece === "") || (selectedPiece === selectedPiece.toUpperCase() && piece === piece.toLowerCase()) || (selectedPiece === selectedPiece.toLowerCase() && piece === piece.toUpperCase())) {
 
 			const moves = getLegalMoves(board, oldRow, oldCol)
 

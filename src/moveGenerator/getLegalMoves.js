@@ -3,6 +3,7 @@ import { knightMoves } from "./knight.js";
 import { bishopMoves } from "./bishop.js";
 import { rookMoves } from "./rook.js";
 import { queenMoves } from "./queen.js";
+import { kingMoves } from "./king.js";
 
 export function getLegalMoves(board, row, col) {
 
@@ -29,6 +30,10 @@ export function getLegalMoves(board, row, col) {
 		case "Q":
 		case "q":
 			return queenMoves(board, row, col);
+
+		case "K":
+		case "k":
+			return kingMoves(board, row, col);
 
 		default:
 			return []
