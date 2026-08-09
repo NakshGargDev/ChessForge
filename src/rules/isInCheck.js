@@ -1,5 +1,5 @@
-import { getLegalMoves } from "../moveGenerator/getLegalMoves";
 import { findKing } from "./findKing";
+import { getPiecesMoves } from "../moveGenerator/getLegalMoves.js";
 
 export function isInCheck(board, isWhite) {
 	const kingPos = findKing(board, isWhite);
@@ -13,7 +13,7 @@ export function isInCheck(board, isWhite) {
 			const opponent = isWhite ? piece === piece.toLowerCase() : piece === piece.toUpperCase();
 
 			if (opponent) {
-				const moves = getLegalMoves(board, row, col);
+				const moves = getPiecesMoves(board, row, col);
 
 				const isCheck = moves.some(move => move[0] === kingPos[0] && move[1] === kingPos[1])
 

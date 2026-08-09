@@ -1,5 +1,6 @@
 import { game } from "../game";
 import { pieces } from "../pieces";
+import { isCheckmate } from "../rules/checkmate.js";
 import { isInCheck } from "../rules/isInCheck.js"
 
 export function movePiece(board, square, row, col) {
@@ -23,6 +24,12 @@ export function movePiece(board, square, row, col) {
 
 	if (check) {
 		console.log("check");
+
+		const checkmate = isCheckmate(board, game.turn === "white");
+
+		if (checkmate) {
+			console.log("checkmate");
+		}
 	}
 
 	document.querySelectorAll(".selected")
