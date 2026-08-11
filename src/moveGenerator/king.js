@@ -15,6 +15,7 @@ export function kingMoves(board, row, col) {
 		const newCol = col + offSetCol;
 
 		if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
+
 			const target = board[newRow][newCol];
 
 			if (target === "") {

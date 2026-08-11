@@ -5,6 +5,10 @@ import { rookMoves } from "./rook.js";
 import { queenMoves } from "./queen.js";
 import { kingMoves } from "./king.js";
 import { isInCheck } from "../rules/isInCheck.js";
+import { whiteKingSideCastle } from "../rules/castle.js";
+import { whiteQueenSideCastle } from "../rules/castle.js";
+import { blackKingSideCastle } from "../rules/castle.js";
+import { blackQueenSideCastle } from "../rules/castle.js";
 
 export function getPiecesMoves(board, row, col) {
 
@@ -60,6 +64,22 @@ export function getLegalMoves(board, row, col) {
 
 	const legalMoves = [];
 	const piece = board[row][col]
+
+	if (piece === "K" && whiteKingSideCastle(board)) {
+		legalMoves.push([7, 6]);
+	}
+
+	if (piece === "K" && whiteQueenSideCastle(board)) {
+		legalMoves.push([7, 2]);
+	}
+
+	if (piece === "k" && blackKingSideCastle(board)) {
+		legalMoves.push([0, 6]);
+	}
+
+	if (piece === "k" && blackQueenSideCastle(board)) {
+		legalMoves.push([0, 2]);
+	}
 
 	for (const [newRow, newCol] of moves) {
 		const isWhite = piece === piece.toUpperCase();
