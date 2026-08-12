@@ -3,12 +3,40 @@ import { pieces } from "../pieces";
 import { isCheckmate } from "../rules/checkmate.js";
 import { findKing } from "../rules/findKing.js";
 import { isInCheck } from "../rules/isInCheck.js"
+import { isStalemate } from "../rules/stalemate.js";
 
 export function movePiece(board, square, row, col) {
 
 	const [oldRow, oldCol] = game.selected;
 
 	const piece = board[oldRow][oldCol];
+
+	if (
+		piece === "P" &&
+		board[row][col] === "" &&
+		(col === oldCol - 1 || col === oldCol + 1)
+	) {
+		console.log("EN PASSANT HIT");
+		console.log({ piece, oldRow, oldCol, row, col });
+
+		board[oldRow][col] = "";
+
+		document.querySelector(
+			`.square[data-row="${oldRow}"][data-col="${col}"]`
+		).textContent = "";
+	}
+
+	if (
+		piece === "p" &&
+		board[row][col] === "" &&
+		(col === oldCol - 1 || col === oldCol + 1)
+	) {
+		board[oldRow][col] = "";
+
+		document.querySelector(
+			`.square[data-row="${oldRow}"][data-col="${col}"]`
+		).textContent = "";
+	}
 
 	board[row][col] = piece;
 	board[oldRow][oldCol] = ""
@@ -22,7 +50,6 @@ export function movePiece(board, square, row, col) {
 		board[7][5] = "R";
 	}
 
-	// WHITE QUEENSIDE: King e1 -> c1, Rook a1 -> d1
 	if (piece === "K" && oldRow === 7 && oldCol === 4 && row === 7 && col === 2) {
 		document.querySelector(`.square[data-row="7"][data-col="0"]`).textContent = "";
 		document.querySelector(`.square[data-row="7"][data-col="3"]`).textContent = pieces["R"];
@@ -32,7 +59,6 @@ export function movePiece(board, square, row, col) {
 	}
 
 
-	// BLACK KINGSIDE: King e8 -> g8, Rook h8 -> f8
 	if (piece === "k" && oldRow === 0 && oldCol === 4 && row === 0 && col === 6) {
 		document.querySelector(`.square[data-row="0"][data-col="7"]`).textContent = "";
 		document.querySelector(`.square[data-row="0"][data-col="5"]`).textContent = pieces["r"];
@@ -42,7 +68,6 @@ export function movePiece(board, square, row, col) {
 	}
 
 
-	// BLACK QUEENSIDE: King e8 -> c8, Rook a8 -> d8
 	if (piece === "k" && oldRow === 0 && oldCol === 4 && row === 0 && col === 2) {
 		document.querySelector(`.square[data-row="0"][data-col="0"]`).textContent = "";
 		document.querySelector(`.square[data-row="0"][data-col="3"]`).textContent = pieces["r"];
@@ -62,6 +87,11 @@ export function movePiece(board, square, row, col) {
 
 	game.selected = null;
 	game.selectedSquare = null
+	game.lastMove = {
+		piece,
+		from: [oldRow, oldCol],
+		to: [row, col]
+	}
 
 	document.querySelectorAll(".in-check")
 		.forEach(sq => sq.classList.remove("in-check"));
@@ -72,7 +102,8 @@ export function movePiece(board, square, row, col) {
 
 	if (isCheckmate(board, game.turn === "white")) {
 		message.textContent = "CHECKMATE!";
-		console.log(isCheckmate(board, game.turn === "white"));
+	} else if (isStalemate(board, game.turn === "white")) {
+		message.textContent = "STALEMATE!";
 	} else if (isInCheck(board, game.turn === "white")) {
 		const kingPos = findKing(board, game.turn === "white");
 

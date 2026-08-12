@@ -10,5 +10,8 @@ export const game = {
 	whiteRightRookMoved: false,
 
 	blackLeftRookMoved: false,
-	blackRightRookMoved: false
+	blackRightRookMoved: false,
+
+	lastMove: null
+
 };
