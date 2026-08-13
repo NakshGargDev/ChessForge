@@ -4,6 +4,7 @@ import { isCheckmate } from "../rules/checkmate.js";
 import { findKing } from "../rules/findKing.js";
 import { isInCheck } from "../rules/isInCheck.js"
 import { isStalemate } from "../rules/stalemate.js";
+import { showPromotion } from "../UI/promotion.js";
 
 export function movePiece(board, square, row, col) {
 
@@ -84,6 +85,24 @@ export function movePiece(board, square, row, col) {
 
 	if (piece === "r" && oldRow === 0 && oldCol === 0) game.blackLeftRookMoved = true;
 	if (piece === "r" && oldRow === 0 && oldCol === 7) game.blackRightRookMoved = true;
+
+	if (piece === "P" && row === 0) {
+		game.promotion = {
+			row,
+			col,
+			color: "white"
+		};
+		showPromotion()
+	}
+
+	if (piece === "p" && row === 7) {
+		game.promotion = {
+			row,
+			col,
+			color: "black"
+		};
+		showPromotion()
+	}
 
 	game.selected = null;
 	game.selectedSquare = null

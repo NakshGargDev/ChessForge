@@ -12,6 +12,7 @@ export const game = {
 	blackLeftRookMoved: false,
 	blackRightRookMoved: false,
 
-	lastMove: null
+	lastMove: null,
 
+	promotion: null
 };

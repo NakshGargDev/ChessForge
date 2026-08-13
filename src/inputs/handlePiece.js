@@ -61,7 +61,7 @@ function highlightMoves(moves) {
 	}
 }
 
-function clearHighlights() {
+export function clearHighlights() {
 
 	document.querySelectorAll(".legal").forEach(square => {
 		square.classList.remove("legal");
