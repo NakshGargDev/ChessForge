@@ -8,7 +8,13 @@
 </head>
 
 <body>
-	<div id="board"></div>
+
+	<div id="game-area">
+		<div id="board"></div>
+		<div id="undo-container">
+			<button id="undo-btn">↶ Undo</button>
+		</div>
+	</div>
 
 	<div id="game-message"></div>
 
@@ -20,7 +26,10 @@
 	</div>
 
 	<script type="module" src="src/main.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+	<script>
+		eruda.init();
+	</script>
 </body>
 
 </html>

@@ -42,3 +42,16 @@ export function createBoard() {
 
 	}
 }
+
+export function renderBoard() {
+	const squares = document.querySelectorAll(".square");
+
+	squares.forEach(square => {
+		const row = Number(square.dataset.row);
+		const col = Number(square.dataset.col);
+
+		square.textContent = "";
+
+		drawPiece(board, row, col, square);
+	});
+}

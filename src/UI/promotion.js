@@ -3,7 +3,7 @@ import { board } from "../board";
 import { pieces } from "../pieces.js";
 import { clearHighlights } from "../inputs/handlePiece.js";
 
-const promotionMenu = document.querySelector("#promotion-menu");
+const promotionMenu = document.querySelector("#promotion-menu")
 
 const queenButton = document.querySelector(".promotion-queen");
 const rookButton = document.querySelector(".promotion-rook");
@@ -18,7 +18,6 @@ queenButton.addEventListener("click", () => {
 	board[row][col] = piece
 
 	document.querySelector(`.square[data-row="${row}"][data-col="${col}"]`).textContent = pieces[piece]
-
 	hidePromotion()
 })
 
@@ -73,3 +72,4 @@ export function hidePromotion() {
 
 	game.promotion = null;
 }
+

@@ -5,12 +5,15 @@ import { findKing } from "../rules/findKing.js";
 import { isInCheck } from "../rules/isInCheck.js"
 import { isStalemate } from "../rules/stalemate.js";
 import { showPromotion } from "../UI/promotion.js";
+import { saveGameState } from "../game.js";
 
 export function movePiece(board, square, row, col) {
 
 	const [oldRow, oldCol] = game.selected;
 
 	const piece = board[oldRow][oldCol];
+
+	saveGameState();
 
 	if (
 		piece === "P" &&
