@@ -19,7 +19,8 @@ export const game = {
 
 	promotion: null,
 
-	undoHistory: []
+	undoHistory: [],
+	moveHistory: []
 };
 
 export function saveGameState() {
@@ -43,7 +44,12 @@ export function saveGameState() {
 			}
 			: null,
 
-		promotion: game.promotion
+		promotion: game.promotion,
+		moveHistory: game.moveHistory.map(move => ({
+			...move,
+			from: [...move.from],
+			to: [...move.to]
+		}))
 	};
 
 	game.undoHistory.push(state);
@@ -76,6 +82,11 @@ export function restoreGameState() {
 
 	game.lastMove = state.lastMove;
 	game.promotion = state.promotion;
+	game.moveHistory = state.moveHistory.map(move => ({
+		...move,
+		from: [...move.from],
+		to: [...move.to]
+	}));
 
 	game.selected = null;
 	game.selectedSquare = null;

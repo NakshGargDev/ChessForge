@@ -10,10 +10,20 @@
 <body>
 
 	<div id="game-area">
+		<button id="history-btn">History</button>
 		<div id="board"></div>
 		<div id="undo-container">
-			<button id="undo-btn">↶ Undo</button>
+			<button id="undo-btn">Undo</button>
 		</div>
+	</div>
+
+	<div id="history-panel">
+		<div id="history-header">
+			<h2>Move History</h2>
+			<button id="history-close">✕</button>
+		</div>
+
+		<div id="history-list"></div>
 	</div>
 
 	<div id="game-message"></div>

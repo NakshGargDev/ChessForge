@@ -6,6 +6,7 @@ import { isInCheck } from "../rules/isInCheck.js"
 import { isStalemate } from "../rules/stalemate.js";
 import { showPromotion } from "../UI/promotion.js";
 import { saveGameState } from "../game.js";
+import { renderHistory } from "../UI/history.js";
 
 export function movePiece(board, square, row, col) {
 
@@ -106,6 +107,14 @@ export function movePiece(board, square, row, col) {
 		};
 		showPromotion()
 	}
+
+	game.moveHistory.push({
+		piece,
+		from: [oldRow, oldCol],
+		to: [row, col]
+	});
+
+	renderHistory();
 
 	game.selected = null;
 	game.selectedSquare = null

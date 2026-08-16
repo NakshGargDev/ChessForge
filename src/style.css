@@ -115,8 +115,8 @@ body {
 
 #undo-container {
 	position: absolute;
-	left: 50%;
-	top: -55px;
+	left: 85%;
+	top: -4px;
 	transform: translateX(-50%);
 }
 
@@ -129,5 +129,43 @@ body {
 
 	border: none;
 	border-radius: 10px;
+	cursor: pointer;
+}
+
+#history-panel {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	width: 320px;
+	max-height: 500px;
+
+	background: white;
+	border-radius: 12px;
+	padding: 20px;
+	z-index: 1000;
+}
+
+#history-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#history-close {
+	cursor: pointer;
+}
+
+#history-btn {
+	padding: 10px 20px;
+
+	font-size: 18px;
+	font-weight: 600;
+
+	border: none;
+	border-radius: 10px;
+
 	cursor: pointer;
 }
