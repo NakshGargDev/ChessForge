@@ -7,6 +7,7 @@ import { isStalemate } from "../rules/stalemate.js";
 import { showPromotion } from "../UI/promotion.js";
 import { saveGameState } from "../game.js";
 import { renderHistory } from "../UI/history.js";
+import { botMove } from "../bot/makeMove.js";
 
 export function movePiece(board, square, row, col) {
 
@@ -150,4 +151,8 @@ export function movePiece(board, square, row, col) {
 	}
 	document.querySelectorAll(".selected")
 		.forEach(sq => sq.classList.remove("selected"));
+
+	if (game.turn === "black" && !game.isBotMove) {
+		botMove(board);
+	}
 }

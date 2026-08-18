@@ -169,3 +169,30 @@ body {
 
 	cursor: pointer;
 }
+
+#rotate-message {
+	display: none;
+}
+
+@media (orientation: landscape) {
+
+	#game-area,
+	#game-message,
+	#promotion-menu,
+	#history-panel {
+		display: none !important;
+	}
+
+	#rotate-message {
+		display: flex;
+		position: fixed;
+		inset: 0;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 30px;
+		color: white;
+		font-size: 24px;
+		font-weight: bold;
+	}
+}

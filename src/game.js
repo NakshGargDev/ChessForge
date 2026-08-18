@@ -20,7 +20,9 @@ export const game = {
 	promotion: null,
 
 	undoHistory: [],
-	moveHistory: []
+	moveHistory: [],
+
+	isBotMove: false
 };
 
 export function saveGameState() {
