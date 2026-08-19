@@ -32,7 +32,7 @@ export function botMove(board) {
 
 	const allMoves = getAllLegalMoves(board, false);
 
-	const move = chooseBestMove(board, allMoves, 1);
+	const move = chooseBestMove(board, allMoves, 2);
 
 	if (!move) return;
 

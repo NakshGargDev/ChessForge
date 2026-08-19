@@ -153,6 +153,8 @@ export function movePiece(board, square, row, col) {
 		.forEach(sq => sq.classList.remove("selected"));
 
 	if (game.turn === "black") {
-		botMove(board);
+		setTimeout(() => {
+			botMove(board);
+		}, 0);
 	}
 }
