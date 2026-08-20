@@ -1,13 +1,17 @@
 import { game } from "../game.js";
 import { getAllLegalMoves } from "./getAllLegalMoves.js";
-import { minimax } from "./minimax.js";
+import { minimax, getNodes, resetNodes } from "./minimax.js";
 import { movePiece } from "../inputs/movePiece.js";
 import { makeTemporaryMove } from "./makeTemporaryMove.js";
 
 function chooseBestMove(board, moves, depth) {
 
+	resetNodes()
+
 	let bestMove = null;
 	let bestScore = -Infinity;
+
+	let alpha = -Infinity;
 
 	for (const move of moves) {
 
@@ -16,13 +20,18 @@ function chooseBestMove(board, moves, depth) {
 			depth - 1,
 			boardCopy,
 			"black",
-			true
+			true,
+			alpha,
+			Infinity
 		);
 
 		if (score > bestScore) {
 			bestScore = score;
 			bestMove = move;
 		}
+
+		alpha = Math.max(alpha, bestScore)
+
 	}
 
 	return bestMove;
@@ -32,8 +41,9 @@ export function botMove(board) {
 
 	const allMoves = getAllLegalMoves(board, false);
 
-	const move = chooseBestMove(board, allMoves, 2);
+	const move = chooseBestMove(board, allMoves, 3);
 
+	console.log("Nodes searched:", getNodes());
 	if (!move) return;
 
 	const [fromRow, fromCol] = move.from;

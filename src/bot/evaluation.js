@@ -25,8 +25,6 @@ export function evaluateBoard(board, color) {
 
 			if (piece === "") continue;
 
-			console.log("PIECE:", JSON.stringify(piece), "VALUE:", value[piece]);
-
 			score += value[piece];
 		}
 	}
