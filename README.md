@@ -1,80 +1,161 @@
-♟️ ChessForge
+ChessForge ♟️
 
-A chess game built from scratch with JavaScript, HTML and CSS.
+A chess game built from scratch with JavaScript, with a chess bot powered by Minimax and Alpha-Beta Pruning.
 
-ChessForge started as a simple chess game and is now evolving into a playable chess engine with a bot.
+Play ChessForge: https://forge-chess.vercel.app
 
-🎮 Play ChessForge
+Source Code: https://github.com/NakshGargDev/ChessForge
 
-Live Demo: https://forge-chess.vercel.app
+---
 
-✨ Features
+🚀 Current Status
 
-- ♟️ Complete chess board
-- ✅ Legal move validation
-- 👑 Castling
-- ⚡ En passant
-- 👸 Pawn promotion
-- ♚ Check detection
-- ☠️ Checkmate detection
-- 🤝 Stalemate detection
-- ↶ Undo moves
-- 📜 Move history
-- 🤖 First playable random-move bot
-- 📱 Portrait-focused mobile UI
+ChessForge is an actively developing project.
+
+The bot currently uses:
+
+- Minimax
+- Alpha-Beta Pruning
+- Basic material evaluation
+- Legal move generation
+- A configurable search depth
+
+The current default bot depth is 3, chosen to keep the game responsive while still allowing the bot to search several moves ahead.
+
+---
 
 🤖 Chess Bot
 
-ChessForge now includes its first playable bot.
+The bot evaluates positions using basic chess piece values:
 
-The current bot:
+Piece| Value
+Pawn| 1
+Knight| 3
+Bishop| 3
+Rook| 5
+Queen| 9
+King| 100
 
-1. Generates all legal moves.
-2. Chooses one legal move randomly.
-3. Executes the move using the existing game system.
+White pieces contribute positively and black pieces negatively to the evaluation.
 
-This is only the beginning.
+The bot then uses Minimax to search possible positions.
 
-Future Bot Development
+Alpha-Beta Pruning
 
-The planned goal is to build a much stronger chess bot using:
+Alpha-Beta pruning removes branches of the search tree that cannot affect the final decision.
 
-- Minimax
-- Alpha-beta pruning
-- Position evaluation
-- Move ordering
-- Quiescence search
-- Transposition tables
-- Iterative deepening
+This allows ChessForge to search deeper positions without evaluating every possible continuation.
+
+---
+
+♟️ Chess Rules
+
+ChessForge currently includes logic for:
+
+- Pawn movement
+- Knight movement
+- Bishop movement
+- Rook movement
+- Queen movement
+- King movement
+- Captures
+- Check
+- Checkmate
+- Stalemate
+- Castling
+- En passant
+- Pawn promotion
+
+---
+
+🎨 Interface
+
+The board is designed to work across different screen sizes.
+
+The UI has been tested on:
+
+- 📱 Mobile
+- 🖥️ TV / large screens
+- 💻 Desktop-sized displays
+
+The board and piece sizes adapt to the available screen space.
+
+---
+
+🧠 How the Bot Works
+
+The simplified search flow is:
+
+Current Position
+       ↓
+Generate Legal Moves
+       ↓
+Try Each Move on a Temporary Board
+       ↓
+Minimax Search
+       ↓
+Alpha-Beta Pruning
+       ↓
+Evaluate Position
+       ↓
+Choose Best Move
+       ↓
+Make Actual Move
+
+Temporary board positions are simulated separately from the actual game board, so Minimax does not modify the DOM while searching.
+
+Only the final selected move is passed to the actual game move system.
+
+---
 
 🛠️ Tech Stack
 
 - JavaScript
 - HTML
 - CSS
-- Vite
 - Vercel
 
-📂 Project
+No chess engine/library is used for the core chess logic.
 
-ChessForge is being developed from scratch to understand how chess rules, move generation, game state, UI, and eventually chess AI work together.
-
-🚀 Version
-
-Current version: v1.2.0
-
-v1.2.0 — Random Bot
-
-- Added the first playable chess bot.
-- Added legal move collection for a side.
-- Added random legal move selection.
-- Bot can automatically make a move after the player's turn.
-
-🔗 Links
-
-- Play: https://forge-chess.vercel.app
-- Source Code: https://github.com/NakshGargDev/ChessForge
+The movement and rule systems are being developed as part of the project.
 
 ---
 
-Built from scratch ♟️
+🔮 Planned Improvements
+
+The bot is still in an early stage.
+
+Planned improvements include:
+
+- Piece-square tables
+- Better positional evaluation
+- Center control
+- Piece development evaluation
+- King safety
+- Move ordering
+- Deeper search
+- Further Alpha-Beta optimization
+- Better endgame evaluation
+- More advanced search techniques
+
+---
+
+📈 Development
+
+ChessForge is being built incrementally, with each stage improving both the chess engine and the bot.
+
+The goal is not just to make a playable chess game, but to build the chess logic and AI understanding step by step from scratch.
+
+---
+
+🔗 Links
+
+Play: https://forge-chess.vercel.app
+
+GitHub: https://github.com/NakshGargDev/ChessForge
+
+---
+
+📜 License
+
+This project is currently a personal development project.
