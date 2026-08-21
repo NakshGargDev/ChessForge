@@ -3,7 +3,7 @@ import { renderBoard } from "../board.js";
 import { game } from "../game.js";
 import { renderHistory } from "./history.js";
 
-const undoButton = document.querySelector("#undo-btn");
+export const undoButton = document.querySelector("#undo-btn");
 
 if (game.undoHistory.length === 0) undoButton.style.display = "none";
 

@@ -152,6 +152,11 @@ body {
 	z-index: 1000;
 }
 
+#history-list {
+	max-height: 400px;
+	overflow-y: auto;
+}
+
 #history-header {
 	display: flex;
 	justify-content: space-between;
@@ -225,4 +230,56 @@ body {
 	color: white;
 	margin-bottom: 150px;
 	margin-left: 35px;
+}
+
+#new-game-btn,
+#main-menu-btn {
+	position: absolute;
+
+	width: 50px;
+	height: 50px;
+
+	font-size: 28px;
+	line-height: 1;
+
+	background: transparent;
+
+	border-radius: 50%;
+
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.8);
+
+	cursor: pointer;
+	transition: 0.2s;
+
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
+}
+
+#main-menu-btn {
+	left: 5%;
+	top: -180px;
+}
+
+#new-game-btn {
+	right: 5%;
+	top: -180px;
+}
+
+#new-game-btn:active,
+#main-menu-btn:active {
+	transform: scale(0.9);
+	background: #D4AF37;
+	border-color: #D4AF37;
+	color: black;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+	#new-game-btn:hover,
+	#main-menu-btn:hover {
+		background: #D4AF37;
+		border-color: #D4AF37;
+		color: black;
+	}
 }
