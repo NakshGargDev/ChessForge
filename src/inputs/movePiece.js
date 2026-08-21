@@ -152,7 +152,7 @@ export function movePiece(board, square, row, col) {
 	document.querySelectorAll(".selected")
 		.forEach(sq => sq.classList.remove("selected"));
 
-	if (game.turn === "black") {
+	if (game.turn === "black" && game.mode === "computer") {
 		setTimeout(() => {
 			botMove(board);
 		}, 0);

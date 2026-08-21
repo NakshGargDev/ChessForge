@@ -8,7 +8,12 @@ const undoButton = document.querySelector("#undo-btn");
 if (game.undoHistory.length === 0) undoButton.style.display = "none";
 
 undoButton.addEventListener("click", () => {
-	restoreGameState();
+	if (game.mode === "computer") {
+		restoreGameState()
+		restoreGameState()
+	} else {
+		restoreGameState();
+	}
 	renderBoard();
 
 	renderHistory()

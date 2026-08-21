@@ -9,6 +9,13 @@
 
 <body>
 
+	<div id="main-menu">
+		<h1 id="title">ChessForge</h1>
+		<button id="friend">Play with friends</button>
+		<button id="computer">Play with computer</button>
+		<button id="exit">Exit</button>
+	</div>
+
 	<div id="game-area">
 		<button id="history-btn">History</button>
 		<div id="board"></div>
@@ -40,6 +47,10 @@
 	</div>
 	<script type="module" src="src/main.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+	<script>
+		eruda.init();
+	</script>
 </body>
 
 </html>

@@ -1,12 +1,10 @@
 import { game } from "../game.js";
 import { getAllLegalMoves } from "./getAllLegalMoves.js";
-import { minimax, getNodes, resetNodes } from "./minimax.js";
+import { minimax } from "./minimax.js";
 import { movePiece } from "../inputs/movePiece.js";
 import { makeTemporaryMove } from "./makeTemporaryMove.js";
 
 function chooseBestMove(board, moves, depth) {
-
-	resetNodes()
 
 	let bestMove = null;
 	let bestScore = -Infinity;
@@ -43,7 +41,6 @@ export function botMove(board) {
 
 	const move = chooseBestMove(board, allMoves, 3);
 
-	console.log("Nodes searched:", getNodes());
 	if (!move) return;
 
 	const [fromRow, fromCol] = move.from;
