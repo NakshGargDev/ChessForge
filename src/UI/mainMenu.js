@@ -8,24 +8,30 @@ const gameArea = document.querySelector("#game-area");
 
 friend.addEventListener("click", () => {
 
-	gameArea.style.display = "block";
-	mainMenu.style.display = "none";
+	setTimeout(() => {
+		gameArea.style.display = "block";
+		mainMenu.style.display = "none";
 
-	game.mode = "friend";
+		game.mode = "friend";
+	}, 200)
 
 });
 
 computer.addEventListener("click", () => {
 
-	gameArea.style.display = "block";
-	mainMenu.style.display = "none";
+	setTimeout(() => {
+		gameArea.style.display = "block";
+		mainMenu.style.display = "none";
 
-	game.mode = "computer"
+		game.mode = "computer"
+
+	}, 200)
 });
 
 exit.addEventListener("click", () => {
 
-	document.body.innerHTML = ""
-	document.body.style.background = "white";
-
+	setTimeout(() => {
+		document.body.innerHTML = ""
+		document.body.style.background = "white";
+	}, 200)
 });
