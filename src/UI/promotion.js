@@ -2,6 +2,7 @@ import { game } from "../game";
 import { board } from "../board";
 import { pieces } from "../pieces.js";
 import { clearHighlights } from "../inputs/handlePiece.js";
+import { playPromotion } from "./soundManger.js";
 
 const promotionMenu = document.querySelector("#promotion-menu")
 
@@ -11,6 +12,10 @@ const bishopButton = document.querySelector(".promotion-bishop");
 const knightButton = document.querySelector(".promotion-knight");
 
 queenButton.addEventListener("click", () => {
+
+	console.log("vigx");
+
+	playPromotion()
 
 	const { row, col, color } = game.promotion;
 
@@ -22,6 +27,8 @@ queenButton.addEventListener("click", () => {
 })
 
 rookButton.addEventListener("click", () => {
+
+	playPromotion()
 
 	const { row, col, color } = game.promotion;
 
@@ -36,6 +43,8 @@ rookButton.addEventListener("click", () => {
 
 bishopButton.addEventListener("click", () => {
 
+	playPromotion()
+
 	const { row, col, color } = game.promotion;
 
 	const piece = color === "white" ? "B" : "b";
@@ -47,6 +56,8 @@ bishopButton.addEventListener("click", () => {
 })
 
 knightButton.addEventListener("click", () => {
+
+	playPromotion()
 
 	const { row, col, color } = game.promotion;
 

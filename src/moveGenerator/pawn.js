@@ -3,6 +3,10 @@ import { game } from "../game";
 export function pawnMoves(board, row, col) {
 	const moves = [];
 
+	if (row === 0 || row === 7) {
+		return moves;
+	}
+
 	const piece = board[row][col];
 
 	const last = game.lastMove;

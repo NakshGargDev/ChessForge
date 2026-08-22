@@ -2,6 +2,8 @@ import { game, resetGame } from "../game";
 import { renderHistory } from "./history";
 import { undoButton } from "./undo";
 
+import { playButton } from "./soundManger";
+
 const mainMenu = document.querySelector("#main-menu");
 const friend = document.querySelector("#friend");
 const computer = document.querySelector("#computer");
@@ -14,6 +16,8 @@ const newGameBtn = document.querySelector("#new-game-btn")
 
 friend.addEventListener("click", () => {
 
+	playButton()
+
 	setTimeout(() => {
 		gameArea.style.display = "block";
 		mainMenu.style.display = "none";
@@ -24,6 +28,8 @@ friend.addEventListener("click", () => {
 });
 
 computer.addEventListener("click", () => {
+
+	playButton()
 
 	setTimeout(() => {
 		gameArea.style.display = "block";
@@ -36,6 +42,8 @@ computer.addEventListener("click", () => {
 
 exit.addEventListener("click", () => {
 
+	playButton()
+
 	setTimeout(() => {
 		document.body.innerHTML = ""
 		document.body.style.background = "white";
@@ -43,6 +51,8 @@ exit.addEventListener("click", () => {
 });
 
 mainMenuBtn.addEventListener("click", () => {
+
+	playButton()
 
 	setTimeout(() => {
 		resetGame()
@@ -54,6 +64,9 @@ mainMenuBtn.addEventListener("click", () => {
 });
 
 newGameBtn.addEventListener("click", () => {
+
+	playButton()
+
 	resetGame();
 	renderHistory();
 	undoButton.style.display = "none"

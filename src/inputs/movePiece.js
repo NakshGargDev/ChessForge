@@ -8,11 +8,19 @@ import { showPromotion } from "../UI/promotion.js";
 import { saveGameState } from "../game.js";
 import { renderHistory } from "../UI/history.js";
 import { botMove } from "../bot/makeMove.js";
+import { playCapture, playCheck, playMove, playCastle } from "../UI/soundManger.js";
 
 export function movePiece(board, square, row, col) {
 
 	const [oldRow, oldCol] = game.selected;
 
+	const capturedPiece = board[row][col];
+
+	if (!(capturedPiece === "")) {
+		playCapture()
+	} else {
+		playMove()
+	}
 	const piece = board[oldRow][oldCol];
 
 	saveGameState();
@@ -22,9 +30,7 @@ export function movePiece(board, square, row, col) {
 		board[row][col] === "" &&
 		(col === oldCol - 1 || col === oldCol + 1)
 	) {
-		console.log("EN PASSANT HIT");
-		console.log({ piece, oldRow, oldCol, row, col });
-
+		playCapture()
 		board[oldRow][col] = "";
 
 		document.querySelector(
@@ -37,6 +43,7 @@ export function movePiece(board, square, row, col) {
 		board[row][col] === "" &&
 		(col === oldCol - 1 || col === oldCol + 1)
 	) {
+		playCapture()
 		board[oldRow][col] = "";
 
 		document.querySelector(
@@ -50,6 +57,8 @@ export function movePiece(board, square, row, col) {
 	square.textContent = pieces[piece]
 
 	if (piece === "K" && oldRow === 7 && oldCol === 4 && row === 7 && col === 6) {
+
+		playCastle()
 		document.querySelector(`.square[data-row="7"][data-col="7"]`).textContent = "";
 		document.querySelector(`.square[data-row="7"][data-col="5"]`).textContent = pieces["R"];
 		board[7][7] = "";
@@ -57,6 +66,8 @@ export function movePiece(board, square, row, col) {
 	}
 
 	if (piece === "K" && oldRow === 7 && oldCol === 4 && row === 7 && col === 2) {
+
+		playCastle()
 		document.querySelector(`.square[data-row="7"][data-col="0"]`).textContent = "";
 		document.querySelector(`.square[data-row="7"][data-col="3"]`).textContent = pieces["R"];
 
@@ -66,6 +77,7 @@ export function movePiece(board, square, row, col) {
 
 
 	if (piece === "k" && oldRow === 0 && oldCol === 4 && row === 0 && col === 6) {
+		playCastle()
 		document.querySelector(`.square[data-row="0"][data-col="7"]`).textContent = "";
 		document.querySelector(`.square[data-row="0"][data-col="5"]`).textContent = pieces["r"];
 
@@ -75,6 +87,8 @@ export function movePiece(board, square, row, col) {
 
 
 	if (piece === "k" && oldRow === 0 && oldCol === 4 && row === 0 && col === 2) {
+
+		playCastle()
 		document.querySelector(`.square[data-row="0"][data-col="0"]`).textContent = "";
 		document.querySelector(`.square[data-row="0"][data-col="3"]`).textContent = pieces["r"];
 
@@ -137,6 +151,8 @@ export function movePiece(board, square, row, col) {
 	} else if (isStalemate(board, game.turn === "white")) {
 		message.textContent = "STALEMATE!";
 	} else if (isInCheck(board, game.turn === "white")) {
+
+		playCheck()
 		const kingPos = findKing(board, game.turn === "white");
 
 		const kingSquare = document.querySelector(

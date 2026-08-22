@@ -1,4 +1,5 @@
 import { game } from "../game.js";
+import { playButton } from "./soundManger.js";
 
 const historyButton = document.querySelector("#history-btn");
 const historyPanel = document.querySelector("#history-panel");
@@ -6,10 +7,12 @@ const historyClose = document.querySelector("#history-close");
 const historyList = document.querySelector("#history-list");
 
 historyButton.addEventListener("click", () => {
+	playButton()
 	historyPanel.style.display = "block";
 });
 
 historyClose.addEventListener("click", () => {
+	playButton()
 	historyPanel.style.display = "none";
 });
 
