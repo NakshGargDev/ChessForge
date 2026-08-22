@@ -13,8 +13,6 @@ const knightButton = document.querySelector(".promotion-knight");
 
 queenButton.addEventListener("click", () => {
 
-	console.log("vigx");
-
 	playPromotion()
 
 	const { row, col, color } = game.promotion;

@@ -2,8 +2,8 @@ import { handleInput } from "./inputs/handleInput.js";
 import { drawPiece } from "./pieces.js"
 
 export const board = [
-	["r", "n", "", "q", "k", "b", "n", "r"],
-	["p", "p", "P", "p", "p", "p", "p", "p"],
+	["r", "n", "b", "q", "k", "b", "n", "r"],
+	["p", "p", "p", "p", "p", "p", "p", "p"],
 	["", "", "", "", "", "", "", ""],
 	["", "", "", "", "", "", "", ""],
 	["", "", "", "", "", "", "", ""],
