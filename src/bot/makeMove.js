@@ -57,6 +57,5 @@ export function botMove(board) {
 	game.selected = [fromRow, fromCol];
 	game.selectedSquare = fromSquare;
 
-	// Actual game move — only here
 	movePiece(board, toSquare, toRow, toCol);
 }

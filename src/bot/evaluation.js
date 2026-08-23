@@ -1,3 +1,10 @@
+import { knightPST } from "./PST.js";
+import { pawnPST } from "./PST.js";
+import { bishopPST } from "./PST.js";
+import { queenPST } from "./PST.js";
+import { rookPST } from "./PST.js";
+import { kingPST } from "./PST.js";
+
 export function evaluateBoard(board, color) {
 
 	const value = {
@@ -24,6 +31,54 @@ export function evaluateBoard(board, color) {
 			const piece = board[row][col];
 
 			if (piece === "") continue;
+
+			if (piece === "N") {
+				score += knightPST[row][col];
+			}
+
+			if (piece === "n") {
+				score -= knightPST[7 - row][col];
+			}
+
+			if (piece === "B") {
+				score += bishopPST[row][col];
+			}
+
+			if (piece === "b") {
+				score -= bishopPST[7 - row][col];
+			}
+
+			if (piece === "P") {
+				score += pawnPST[row][col];
+			}
+
+			if (piece === "p") {
+				score -= pawnPST[7 - row][col];
+			}
+
+			if (piece === "Q") {
+				score += queenPST[row][col];
+			}
+
+			if (piece === "q") {
+				score -= queenPST[7 - row][col];
+			}
+
+			if (piece === "R") {
+				score += rookPST[row][col];
+			}
+
+			if (piece === "r") {
+				score -= rookPST[7 - row][col];
+			}
+
+			if (piece === "K") {
+				score += kingPST[row][col];
+			}
+
+			if (piece === "k") {
+				score -= kingPST[7 - row][col];
+			}
 
 			score += value[piece];
 		}
