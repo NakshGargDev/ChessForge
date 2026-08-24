@@ -4,6 +4,10 @@ import { movePiece } from "./movePiece.js"
 
 export function handlePiece(square, row, col, board) {
 
+	if (game.checkmated) return
+
+	if (game.isPromoting) return
+
 	const piece = board[row][col];
 
 	if (game.selected) {
@@ -17,12 +21,11 @@ export function handlePiece(square, row, col, board) {
 			game.selectedSquare = null
 			square.classList.remove("selected")
 			clearHighlights()
-		} else if ((piece === "") || (selectedPiece === selectedPiece.toUpperCase() && piece === piece.toLowerCase()) || (selectedPiece === selectedPiece.toLowerCase() && piece === piece.toUpperCase())) {
+		} else if ((piece === "") || (selectedPiece === selectedPiece.toUpperCase() && piece === piece.toLowerCase()) || (selectedPiece = e == selectedPiece.toLowerCase() && piece === piece.toUpperCase())) {
 
 			const moves = getLegalMoves(board, oldRow, oldCol)
 
 			const allowed = moves.some(move => move[0] === row && move[1] === col)
-
 
 			if (allowed) {
 				movePiece(board, square, row, col)

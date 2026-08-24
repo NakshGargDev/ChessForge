@@ -9,6 +9,7 @@ export const undoButton = document.querySelector("#undo-btn");
 if (game.undoHistory.length === 0) undoButton.style.display = "none";
 
 undoButton.addEventListener("click", () => {
+	if (game.checkmated) return
 	playButton()
 	if (game.mode === "computer") {
 		restoreGameState()

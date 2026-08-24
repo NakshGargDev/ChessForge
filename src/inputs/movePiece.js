@@ -111,6 +111,7 @@ export function movePiece(board, square, row, col) {
 			col,
 			color: "white"
 		};
+		game.isPromoting = true;
 		showPromotion()
 	}
 
@@ -120,6 +121,7 @@ export function movePiece(board, square, row, col) {
 			col,
 			color: "black"
 		};
+		game.isPromoting = true;
 		showPromotion()
 	}
 
@@ -147,6 +149,7 @@ export function movePiece(board, square, row, col) {
 	const message = document.querySelector("#game-message");
 
 	if (isCheckmate(board, game.turn === "white")) {
+		game.checkmated = true;
 		message.textContent = "CHECKMATE!";
 	} else if (isStalemate(board, game.turn === "white")) {
 		message.textContent = "STALEMATE!";
@@ -168,7 +171,7 @@ export function movePiece(board, square, row, col) {
 	document.querySelectorAll(".selected")
 		.forEach(sq => sq.classList.remove("selected"));
 
-	if (game.turn === "black" && game.mode === "computer") {
+	if (game.turn === "black" && game.mode === "computer" && !game.checkmated && !game.isPromoting) {
 		setTimeout(() => {
 			botMove(board);
 		}, 0);

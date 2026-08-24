@@ -1,6 +1,8 @@
 import { evaluateBoard } from "./evaluation.js";
 import { getAllLegalMoves } from "./getAllLegalMoves.js";
 import { makeTemporaryMove } from "./makeTemporaryMove.js";
+import { isInCheck } from "../rules/isInCheck.js";
+import { orderMoves } from "./moveOrdering.js";
 
 export function minimax(depth, board, color, minimizingPlayer, alpha, beta) {
 
@@ -11,15 +13,22 @@ export function minimax(depth, board, color, minimizingPlayer, alpha, beta) {
 	const isWhite = minimizingPlayer;
 	const moves = getAllLegalMoves(board, isWhite);
 
+	const orderedMoves = orderMoves(board, moves);
+
 	if (moves.length === 0) {
-		return evaluateBoard(board, color);
+
+		if (isInCheck(board, isWhite)) {
+			return minimizingPlayer ? Infinity : -Infinity;
+		}
+
+		return 0;
 	}
 
 	if (!minimizingPlayer) {
 
 		let bestScore = -Infinity;
 
-		for (const move of moves) {
+		for (const move of orderedMoves) {
 
 			const boardCopy = makeTemporaryMove(board, move);
 			const score = minimax(
@@ -44,7 +53,7 @@ export function minimax(depth, board, color, minimizingPlayer, alpha, beta) {
 
 	let bestScore = Infinity;
 
-	for (const move of moves) {
+	for (const move of orderedMoves) {
 
 		const boardCopy = makeTemporaryMove(board, move);
 		const score = minimax(

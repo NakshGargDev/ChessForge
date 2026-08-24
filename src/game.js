@@ -22,48 +22,51 @@ export const game = {
 	undoHistory: [],
 	moveHistory: [],
 
-	mode: null
+	mode: null,
+
+	checkmated: false,
+	isPromoting: false
 
 };
 
 export function resetGame() {
 
-        const startingBoard = [
-                ["r", "n", "b", "q", "k", "b", "n", "r"],
-                ["p", "p", "p", "p", "p", "p", "p", "p"],
-                ["", "", "", "", "", "", "", ""],
-                ["", "", "", "", "", "", "", ""],
-                ["", "", "", "", "", "", "", ""],
-                ["", "", "", "", "", "", "", ""],
-                ["P", "P", "P", "P", "P", "P", "P", "P"],
-                ["R", "N", "B", "Q", "K", "B", "N", "R"]
-        ];
+	const startingBoard = [
+		["r", "n", "b", "q", "k", "b", "n", "r"],
+		["p", "p", "p", "p", "p", "p", "p", "p"],
+		["", "", "", "", "", "", "", ""],
+		["", "", "", "", "", "", "", ""],
+		["", "", "", "", "", "", "", ""],
+		["", "", "", "", "", "", "", ""],
+		["P", "P", "P", "P", "P", "P", "P", "P"],
+		["R", "N", "B", "Q", "K", "B", "N", "R"]
+	];
 
-        startingBoard.forEach((row, r) => {
-                row.forEach((piece, c) => {
-                        board[r][c] = piece;
-                });
-        });
+	startingBoard.forEach((row, r) => {
+		row.forEach((piece, c) => {
+			board[r][c] = piece;
+		});
+	});
 
-        game.selected = null;
-        game.selectedSquare = null;
-        game.turn = "white";
+	game.selected = null;
+	game.selectedSquare = null;
+	game.turn = "white";
 
-        game.whiteKingMoved = false;
-        game.blackKingMoved = false;
+	game.whiteKingMoved = false;
+	game.blackKingMoved = false;
 
-        game.whiteLeftRookMoved = false;
-        game.whiteRightRookMoved = false;
-        game.blackLeftRookMoved = false;
-        game.blackRightRookMoved = false;
+	game.whiteLeftRookMoved = false;
+	game.whiteRightRookMoved = false;
+	game.blackLeftRookMoved = false;
+	game.blackRightRookMoved = false;
 
-        game.lastMove = null;
-        game.promotion = null;
+	game.lastMove = null;
+	game.promotion = null;
 
-        game.undoHistory = [];
-        game.moveHistory = [];
+	game.undoHistory = [];
+	game.moveHistory = [];
 
-        renderBoard();
+	renderBoard();
 }
 
 export function saveGameState() {
