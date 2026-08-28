@@ -1,51 +1,35 @@
-ChessForge ♟️
+# ChessForge ♟️
 
-A fully custom chess game and chess engine built from scratch with JavaScript, HTML, and CSS.
+ChessForge is a fully custom chess game and chess engine built from scratch with **JavaScript, HTML, and CSS**.
 
-ChessForge started as a simple chessboard and gradually evolved into a complete playable chess application with chess rules, move validation, an AI opponent, search algorithms, evaluation improvements, UI polish, sounds, history, undo, and multiple game modes.
+What started as a simple chessboard evolved into a complete playable chess application with chess rules, move validation, a custom AI opponent, search algorithms, positional evaluation, UI features, sounds, move history, undo, and multiple game modes.
 
----
+## 🎮 Live Demo
 
-✨ Features
+**Play ChessForge:** https://forge-chess.vercel.app/
 
-♟️ Complete Chess Rules
+## ✨ Features
 
+### ♟️ Complete Chess Rules
 - Standard 8×8 chessboard
 - Legal piece movement
 - Pawn movement and double moves
 - Pawn captures
-- Knight movement
-- Bishop movement
-- Rook movement
-- Queen movement
-- King movement
+- Knight, Bishop, Rook, Queen, and King movement
 - Check detection
 - Checkmate detection
 - Stalemate detection
-- Castling
-- Kingside castling
-- Queenside castling
+- Kingside and queenside castling
 - En passant
-- Pawn promotion
-- Promotion to Queen
-- Promotion to Rook
-- Promotion to Bishop
-- Promotion to Knight
+- Pawn promotion to Queen, Rook, Bishop, or Knight
 
----
-
-🤖 Chess Bot
+### 🤖 Custom Chess Engine
 
 ChessForge includes a custom chess engine built from scratch.
 
-The engine does not rely on an external chess engine for its move selection.
+The engine does **not** rely on an external chess engine for move selection.
 
-It uses a search-based approach to evaluate positions and select moves.
-
-Search
-
-The engine uses:
-
+It uses:
 - Minimax
 - Alpha-beta pruning
 - Move generation
@@ -54,87 +38,32 @@ The engine uses:
 - Position evaluation
 - Piece-Square Tables
 
-Alpha-beta pruning reduces unnecessary branches during the search.
+### 🧠 Position Evaluation
 
-Move ordering helps the engine examine promising moves earlier.
+The engine evaluates positions using material and positional information.
 
-This makes alpha-beta pruning significantly more useful during deeper searches.
-
----
-
-🧠 Position Evaluation
-
-The engine evaluates chess positions using material and positional information.
-
-Material
-
-The evaluation considers the value of pieces such as:
-
-- Pawn
-- Knight
-- Bishop
-- Rook
-- Queen
-- King
-
-Piece-Square Tables
-
-ChessForge also uses Piece-Square Tables (PSTs).
-
-PSTs allow the engine to give different values to pieces depending on their position on the board.
-
-This helps the bot understand concepts such as:
-
+Piece-Square Tables (PSTs) help the engine evaluate:
 - Developing pieces
 - Controlling the center
-- Improving piece activity
+- Piece activity
 - King safety
 - Better piece placement
 - Positional advantages
 
-This made the bot noticeably stronger than a purely material-based evaluation.
+### 🏆 Bot Testing
 
----
+ChessForge was tested against progressively stronger levels of an external chess application.
 
-🔎 Move Ordering
-
-ChessForge includes move ordering to improve the search process.
-
-Moves are scored before being searched.
-
-Higher-priority moves are examined first.
-
-This helps alpha-beta pruning eliminate more branches earlier.
-
-The result is a more efficient search without changing the fundamental minimax algorithm.
-
----
-
-🏆 Bot Testing
-
-The engine was tested against progressively stronger levels of an external chess application.
-
-ChessForge achieved the following during testing:
-
-- Easy level — Win
-- Middle level — Win
-- Hard level — Win
-- Advance level — Draw
+| Level | Result |
+|---|---|
+| Easy | Win |
+| Middle | Win |
+| Hard | Win |
+| Advance | Draw |
 
 The Hard-level win was achieved with a depth-4 search.
 
-The Advance-level game ended in a draw, with ChessForge being down material during the game.
-
-These tests helped identify areas where the engine could still be improved.
-
----
-
-🎮 Game Modes
-
-ChessForge supports playing chess through its game interface.
-
-The game can handle:
-
+### 🎮 Game Features
 - Human moves
 - Computer moves
 - Move validation
@@ -143,17 +72,9 @@ The game can handle:
 - Promotion selection
 - Undo
 - Move history
+- Game reset
 
-The interface updates the board after every move.
-
----
-
-🎨 User Interface
-
-The UI was built specifically for ChessForge.
-
-It includes:
-
+### 🎨 User Interface
 - Main menu
 - Chessboard
 - Game controls
@@ -167,20 +88,8 @@ It includes:
 - Valid-move highlighting
 - Captured-piece display
 - Board coordinates
-- Game reset controls
 
-The last move is visually highlighted so it is easy to see where a piece came from and where it moved.
-
----
-
-🔊 Sound Effects
-
-ChessForge includes custom chess sound effects.
-
-Different game events have their own sounds.
-
-Sounds include:
-
+### 🔊 Sound Effects
 - Piece movement
 - Captures
 - Check
@@ -188,117 +97,7 @@ Sounds include:
 - Promotion
 - UI buttons
 
-The sounds make the game feel more responsive and polished.
-
----
-
-↩️ Undo System
-
-ChessForge includes an undo system.
-
-Game states can be stored and restored when undoing moves.
-
-The state system keeps track of important information such as:
-
-- Board position
-- Turn
-- Game state
-- Move history
-- Promotion state
-- Castling state
-- Last-move information
-
-This allows the player to safely return to previous positions.
-
----
-
-📜 Move History
-
-ChessForge keeps track of played moves.
-
-The history system records:
-
-- Moving piece
-- Starting square
-- Destination square
-
-A dedicated history interface allows players to review moves made during the game.
-
----
-
-👑 Check & Checkmate
-
-ChessForge contains its own check detection system.
-
-The engine can:
-
-1. Find the king
-2. Generate opponent moves
-3. Determine whether the king is attacked
-4. Filter illegal moves
-5. Determine whether legal moves remain
-
-If a king is in check and no legal moves remain, ChessForge recognizes checkmate.
-
----
-
-🟰 Stalemate
-
-ChessForge also detects stalemate.
-
-A position is considered stalemate when:
-
-- The player is not in check
-- The player has no legal moves
-
-The game then ends as a draw.
-
----
-
-🏰 Castling
-
-Castling is implemented for both sides.
-
-ChessForge checks:
-
-- Whether the king has moved
-- Whether the relevant rook has moved
-- Whether the required squares are empty
-- Whether the king is currently in check
-- Whether the king crosses an attacked square
-
-Both castling directions are supported.
-
----
-
-🐇 En Passant
-
-En passant is implemented through last-move information.
-
-The engine checks the previous pawn movement to determine whether an en passant capture is legal.
-
-This is important because en passant depends not only on the current board position, but also on the immediately preceding move.
-
----
-
-👸 Promotion
-
-When a pawn reaches the opposite end of the board, ChessForge opens a promotion interface.
-
-The player can select:
-
-- Queen
-- Rook
-- Bishop
-- Knight
-
-The selected piece replaces the pawn on the promotion square.
-
----
-
-🛠️ Technologies
-
-ChessForge was built using:
+## 🛠️ Technologies
 
 - JavaScript
 - HTML
@@ -308,30 +107,27 @@ ChessForge was built using:
 
 No external chess engine is required for the custom bot.
 
----
-
-🚀 Running the Project
+## 🚀 Running Locally
 
 Clone the repository:
 
+```bash
 git clone https://github.com/NakshGargDev/ChessForge.git
+```
 
 Enter the project:
 
+```bash
 cd ChessForge
+```
 
-Then run it using a local development server such as Vite.
+Then run the project using a local development server such as Vite and open the local address provided by the development server.
 
-Open the local address provided by the development server in your browser.
-
----
-
-🎯 Goals of the Project
+## 🎯 Project Goals
 
 ChessForge was created to explore how a chess engine actually works.
 
-The project focuses on understanding:
-
+The project focuses on:
 - Board representation
 - Move generation
 - Legal move validation
@@ -346,56 +142,21 @@ The project focuses on understanding:
 - UI architecture
 - JavaScript modules
 
-Instead of simply using an existing chess engine, the goal was to build the important parts from scratch.
+The goal was to build the important parts from scratch instead of simply using an existing chess engine.
 
----
-
-📈 Development Journey
+## 📈 Development Journey
 
 ChessForge started with a basic chessboard.
 
-Piece movement was implemented first.
+Piece movement was implemented first, followed by legal move validation and special chess rules such as castling, en passant, and promotion.
 
-Then legal move validation was added.
+The project then gained check detection, checkmate, stalemate, undo, move history, the main menu, game UI, and sound effects.
 
-After that, special chess rules were introduced.
+The next major step was the chess bot. Minimax was added, followed by alpha-beta pruning, Piece-Square Tables, and move ordering.
 
-The project gradually gained:
-
-- Castling
-- En passant
-- Promotion
-- Check detection
-- Checkmate
-- Stalemate
-- Undo
-- Move history
-- Main menu
-- Game UI
-- Sound effects
-
-The next major step was the chess bot.
-
-The bot initially used basic move selection.
-
-Minimax was then added.
-
-Alpha-beta pruning made deeper searches more practical.
-
-Piece-Square Tables improved positional understanding.
-
-Move ordering improved search efficiency.
-
-The bot was then tested against progressively stronger opponents.
-
----
-
-🧪 Testing
-
-ChessForge was tested manually through actual games.
+## 🧪 Testing
 
 Testing focused on:
-
 - Legal moves
 - Special moves
 - Check situations
@@ -411,34 +172,24 @@ Testing focused on:
 - Position evaluation
 - UI behavior
 
-Bot testing was especially useful for finding weaknesses in evaluation and search.
-
----
-
-💡 What I Learned
+## 💡 What I Learned
 
 Building ChessForge helped develop a deeper understanding of chess programming and software development.
 
-Some of the most important lessons were:
-
-- How chess positions can be represented with arrays
-- How legal moves differ from pseudo-legal moves
-- Why every move must be tested for king safety
+Key lessons included:
+- Representing chess positions with arrays
+- Understanding pseudo-legal vs. legal moves
+- Testing moves for king safety
 - How minimax searches game trees
 - Why alpha-beta pruning matters
-- Why move ordering improves search performance
+- How move ordering improves search performance
 - Why material evaluation alone is not enough
 - How Piece-Square Tables improve positional play
-- How different modules can share game state
-- How UI and engine logic should remain separated
-- How debugging dependency problems works
-- How Git can be used to safely experiment with large changes
+- Separating UI and engine logic
+- Managing shared game state across modules
+- Using Git to safely experiment with large changes
 
----
-
-🔮 Possible Future Improvements
-
-Although ChessForge is considered finished, possible future experiments include:
+## 🔮 Possible Future Experiments
 
 - Deeper search
 - More advanced evaluation
@@ -455,38 +206,25 @@ Although ChessForge is considered finished, possible future experiments include:
 - Opening book support
 - More advanced engine testing
 
-These are potential future experiments rather than requirements for the current project.
+## 🏁 Final Status
+
+ChessForge is a complete custom chess application combining:
+
+**Chess rules + UI + sound + game state + search + evaluation + AI**
+
+The project was built from scratch to understand the core ideas behind chess programming and chess-engine development.
+
+## 👨‍💻 Author
+
+**Naksh Garg**
+
+- GitHub: https://github.com/NakshGargDev
+- LinkedIn: https://www.linkedin.com/in/naksh-garg-52a639430/
+
+**JavaScript • HTML • CSS • Chess Programming**
 
 ---
 
-🏁 Final Status
+⭐ Explore the code, experiment with the engine, and try to beat ChessForge.
 
-ChessForge is complete.
-
-It started as a basic chess project and evolved into a complete custom chess application with a custom chess engine.
-
-The project combines:
-
-Chess rules + UI + sound + game state + search + evaluation + AI
-
-all built into one project.
-
----
-
-👨‍💻 Author
-
-Built by Naksh Garg.
-
-Built from scratch with:
-
-JavaScript • HTML • CSS • Chess Programming
-
----
-
-⭐ If You Like The Project
-
-Feel free to explore the code, experiment with the engine, and try to beat ChessForge.
-
-♟️ Build it. Test it. Improve it.
-
-ChessForge — a chess engine built from scratch.
+**♟️ Build it. Test it. Improve it.**
