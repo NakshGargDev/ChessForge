@@ -21,7 +21,7 @@ export function handlePiece(square, row, col, board) {
 			game.selectedSquare = null
 			square.classList.remove("selected")
 			clearHighlights()
-		} else if ((piece === "") || (selectedPiece === selectedPiece.toUpperCase() && piece === piece.toLowerCase()) || (selectedPiece = e == selectedPiece.toLowerCase() && piece === piece.toUpperCase())) {
+		} else if ((piece === "") || (selectedPiece === selectedPiece.toUpperCase() && piece === piece.toLowerCase()) || (selectedPiece === selectedPiece.toLowerCase() && piece === piece.toUpperCase())) {
 
 			const moves = getLegalMoves(board, oldRow, oldCol)
 
