@@ -66,6 +66,9 @@ export function resetGame() {
 	game.undoHistory = [];
 	game.moveHistory = [];
 
+  game.checkmated: false,
+  game.isPromoting: false,
+
 	renderBoard();
 }
 
